@@ -4,7 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>IMBAPEDIA</title>
+
+<!-- FAVICON -->
+
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 
 <meta property="og:title" content="IMBAPEDIA Platform Rekomendasi">
 <meta property="og:description" content="Temukan berbagai platform menarik hari ini">
@@ -19,43 +26,23 @@ background:#f5f6f8;
 transition:0.4s;
 }
 
-/* AMOLED DARK */
+/* DARK AMOLED */
 .dark{
 background:#000;
 color:white;
 }
 
-.dark .header{
-background:#000;
-}
-
-.dark .catnav{
-background:#000;
-}
-
-.dark .card{
-background:#0f0f0f;
-box-shadow:none;
-}
-
-.dark .progress{
-background:#222;
-}
-
-.dark .visit{
-background:#16a34a;
-}
-
-.dark .toast{
-background:#0f0f0f;
-color:white;
-}
-
+.dark .header{background:#000;}
+.dark .catnav{background:#000;}
+.dark .card{background:#0f0f0f;box-shadow:none;}
+.dark .progress{background:#222;}
+.dark .visit{background:#16a34a;}
+.dark .toast{background:#0f0f0f;color:white;}
 .dark .hero::after{
 background:linear-gradient(to bottom,rgba(0,0,0,0.4),rgba(0,0,0,0.9));
 }
 
-/* HEADER SLIM */
+/* HEADER */
 .header{
 background:linear-gradient(90deg,#42b549,#2ea043);
 padding:8px 16px;
@@ -65,7 +52,6 @@ align-items:center;
 position:sticky;
 top:0;
 z-index:10;
-transition:0.4s;
 }
 
 .logo-img{
@@ -138,7 +124,6 @@ padding:10px;
 display:flex;
 gap:10px;
 overflow:auto;
-transition:0.4s;
 }
 
 .catnav div{
@@ -313,14 +298,13 @@ to{transform:translateX(0);opacity:1}
 
 <script>
 
-/* AUTO DARK JAM 18 */
+/* AUTO DARK */
 let hour=new Date().getHours();
 if(hour>=18){
 document.body.classList.add("dark");
 document.getElementById("toggleBtn").innerHTML="☀️";
 }
 
-/* TOGGLE */
 function toggleDark(){
 document.body.classList.toggle("dark");
 
