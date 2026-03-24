@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 
 <html lang="id">
 <head>
@@ -6,8 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>IMBAPEDIA</title>
-
-<!-- FAVICON -->
 
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="shortcut icon" href="favicon.png">
@@ -52,10 +50,20 @@ align-items:center;
 position:sticky;
 top:0;
 z-index:10;
+box-shadow:0 12px 30px rgba(0,0,0,.18);
 }
 
 .logo-img{
-height:56px;
+height:64px;
+background:white;
+padding:6px 10px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,.25);
+transition:.3s;
+}
+
+.logo-img:hover{
+transform:scale(1.05);
 }
 
 .toggle{
@@ -113,6 +121,25 @@ padding:12px 20px;
 border-radius:12px;
 color:white;
 text-decoration:none;
+box-shadow:0 10px 25px rgba(66,181,73,.5);
+position:relative;
+overflow:hidden;
+}
+
+.hero-btn::after{
+content:"";
+position:absolute;
+left:-120%;
+top:0;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,.8),transparent);
+animation:glow 3s infinite;
+}
+
+@keyframes glow{
+0%{left:-120%}
+100%{left:120%}
 }
 
 /* CATEGORY */
@@ -197,10 +224,43 @@ border:none;
 border-radius:8px;
 }
 
+/* STICKY CTA */
+.sticky-cta{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:white;
+padding:10px;
+box-shadow:0 -8px 25px rgba(0,0,0,.2);
+display:none;
+z-index:99;
+}
+
+.sticky-btn{
+background:#42b549;
+color:white;
+text-align:center;
+padding:14px;
+border-radius:12px;
+font-weight:bold;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
+}
+
+@media(max-width:700px){
+.sticky-cta{display:block;}
+}
+
 /* WA */
 .wa{
 position:fixed;
-bottom:20px;
+bottom:80px;
 right:20px;
 width:65px;
 height:65px;
@@ -235,16 +295,15 @@ from{transform:translateX(-30px);opacity:0}
 to{transform:translateX(0);opacity:1}
 }
 
-/* MOBILE */
 @media(max-width:600px){
 .hero{height:250px;}
-.logo-img{height:46px;}
+.logo-img{height:52px;}
 .hero-text h1{font-size:22px;}
 }
 
 </style>
 
-  <script charset="UTF-8" src="//web.webpushs.com/js/push/b6454457ab33b71af95c09ea9dd8e538_1.js" async></script>
+<script charset="UTF-8" src="//web.webpushs.com/js/push/b6454457ab33b71af95c09ea9dd8e538_1.js" async></script>
 
 </head>
 
@@ -260,6 +319,7 @@ to{transform:translateX(0);opacity:1}
 <img src="https://i.postimg.cc/3RCSGQT9/banner2.png">
 <div class="hero-text">
 <h1>Benefit New Member</h1>
+<div id="heroVisitor" style="margin-top:6px;font-size:14px;">👥 120 orang melihat</div>
 <a class="hero-btn" href="https://mbob.in/rtpsuhu69" target="_blank">Mulai Sekarang</a>
 </div>
 </div>
@@ -289,6 +349,10 @@ to{transform:translateX(0);opacity:1}
 <button class="load" onclick="loadMore()">Load More</button>
 
 <div class="toast-container" id="toast"></div>
+
+<div class="sticky-cta">
+<a class="sticky-btn" href="https://mbob.in/rtpsuhu69" target="_blank">🔥 Klaim Bonus Sekarang</a>
+</div>
 
 <a class="wa" href="https://wa.me/6281929837641" target="_blank">
 <svg viewBox="0 0 32 32" width="32" fill="white">
@@ -331,6 +395,12 @@ setInterval(()=>{
 document.getElementById("visitor").innerHTML="👥 "+Math.floor(Math.random()*150+80)+" orang sedang melihat";
 },2000);
 
+/* HERO VISITOR */
+setInterval(()=>{
+document.getElementById("heroVisitor").innerHTML=
+"👥 "+Math.floor(Math.random()*120+90)+" orang melihat";
+},3000);
+
 /* LOAD */
 function loadMore(){
 let box=document.getElementById("list");
@@ -344,6 +414,14 @@ box.innerHTML+=`
 </div>`;
 }
 }
+
+/* PROGRESS MOVE */
+setInterval(()=>{
+document.querySelectorAll(".bar").forEach(el=>{
+let w=Math.floor(Math.random()*20+60);
+el.style.width=w+"%";
+});
+},4000);
 
 /* USER SENSOR */
 function generateUser(){
@@ -371,7 +449,34 @@ setTimeout(()=>{el.remove()},4000);
 }
 
 setInterval(toast,4500);
+
+/* EXIT POP */
+document.addEventListener("mouseout",function(e){
+if(e.clientY<10){
+let pop=document.createElement("div");
+pop.style=`
+position:fixed;
+top:0;left:0;width:100%;height:100%;
+background:rgba(0,0,0,.8);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:999;
+`;
+pop.innerHTML=`
+<div style="background:white;padding:25px;border-radius:16px;text-align:center;max-width:320px;">
+<h2>⚡ Bonus Hampir Habis</h2>
+<p>Mau lanjut klaim benefit?</p>
+<a href="https://mbob.in/rtpsuhu69" target="_blank"
+style="display:block;background:#42b549;color:white;padding:12px;border-radius:10px;margin-top:10px;text-decoration:none;">
+Lanjut Klaim</a>
+<div onclick="this.parentElement.parentElement.remove()" style="margin-top:10px;cursor:pointer;color:#999;">Nanti</div>
+</div>`;
+document.body.appendChild(pop);
+}
+});
+
 </script>
+
 </body>
 </html>
-
