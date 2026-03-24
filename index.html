@@ -428,7 +428,7 @@ el.style.width=w+"%";
 
 /* USER SENSOR */
 function generateUser(){
-let p=["tet","ews","opo","rak","zen","mik","lor","dap","vin","kas"];
+let p=["tet","ews","opo","rak","zen","mik","lor","dap","vin","kas","rop","vio","ala"];
 let t=p[Math.floor(Math.random()*p.length)];
 let l=Math.floor(Math.random()*4)+3;
 for(let i=0;i<l;i++){t+="x";}
@@ -438,7 +438,7 @@ return t;
 function toast(){
 let t=document.getElementById("toast");
 let el=document.createElement("div");
-let city=["Jakarta","Medan","Surabaya","Bandung"];
+let city=["Jakarta","Medan","Surabaya","Bandung","Jambi","Palembang","Äceh","Pekan Baru","Jogjakarta","Bali"];
 let amt=(Math.floor(Math.random()*500+50)*1000).toLocaleString("id-ID");
 
 el.className="toast";
